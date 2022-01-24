@@ -72,7 +72,7 @@ namespace UnitTests.Services
 			//assert
 			File.Exists(path).Should().BeTrue();
 			File.ReadLines(path).Count().Should().BeGreaterThan(0);
-			File.ReadLines(path).Count().Should().BeLessThan(41);
+			File.ReadLines(path).Count().Should().BeLessThan(42); // 1 line for 'timestamp & data' + 40loglines
 		}
 
 		[Fact]
@@ -100,7 +100,7 @@ namespace UnitTests.Services
 
 			for (int i = 1; i <= items; i++)
 			{
-				var line = new LogLine(Guid.NewGuid().ToString())
+				var line = new LogLine(i.ToString())
 				{
 					Timestamp = DateTime.Now
 				};
